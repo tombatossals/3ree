@@ -17,3 +17,11 @@
 /// <reference path="redux-logger/redux-logger.d.ts" />
 /// <reference path="redux-devtools/redux-devtools.d.ts" />
 /// <reference path="react-router/react-router.d.ts" />
+/// <reference path="socket.io-client/socket.io-client.d.ts" />
+/// <reference path="node-uuid/node-uuid.d.ts" />
+/// <reference path="node-uuid/node-uuid-base.d.ts" />
+/// <reference path="node-uuid/node-uuid-cjs.d.ts" />
+
+declare module "xss" {
+    export default class xss {}
+}

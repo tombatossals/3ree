@@ -1,4 +1,6 @@
-import uuid from 'node-uuid';
+/// <reference path="../../../typings/tsd.d.ts" />
+
+import * as uuid from 'node-uuid';
 
 export function hasLocalStorage() {
   return (!!window.localStorage);

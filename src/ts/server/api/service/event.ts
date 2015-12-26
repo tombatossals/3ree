@@ -1,6 +1,8 @@
-import r from 'rethinkdb';
-import config from '../config.json';
-import xss from 'xss';
+
+import * as r from 'rethinkdb';
+import * as xss from 'xss';
+
+var config = require('../config');
 
 function connect() {
   return r.connect(config);

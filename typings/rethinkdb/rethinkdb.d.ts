@@ -93,6 +93,7 @@ declare module "rethinkdb" {
     get(key:string):Sequence; // primary key
     getAll(key:string, index?:Index):Sequence; // without index defaults to primary key
     getAll(...keys:string[]):Sequence;
+    changes():any;
   }
 
   interface Sequence extends Operation<Cursor>, Writeable {

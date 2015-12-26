@@ -1,4 +1,5 @@
-import socketClient from 'socket.io-client';
+/// <reference path="../../../typings/tsd.d.ts" />
+import * as socketClient from 'socket.io-client';
 export function setupRealtime(store, actions) {
     const io = socketClient();
     io.on('event-change', (change) => {

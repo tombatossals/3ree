@@ -61,6 +61,18 @@
     },
     "react-router/react-router.d.ts": {
       "commit": "1da639a106527e0c4010b354a1efe52a3059a291"
+    },
+    "socket.io-client/socket.io-client.d.ts": {
+      "commit": "1da639a106527e0c4010b354a1efe52a3059a291"
+    },
+    "node-uuid/node-uuid.d.ts": {
+      "commit": "1da639a106527e0c4010b354a1efe52a3059a291"
+    },
+    "node-uuid/node-uuid-base.d.ts": {
+      "commit": "1da639a106527e0c4010b354a1efe52a3059a291"
+    },
+    "node-uuid/node-uuid-cjs.d.ts": {
+      "commit": "1da639a106527e0c4010b354a1efe52a3059a291"
     }
   }
 }

@@ -7,7 +7,7 @@ import createLogger from 'redux-logger';
 import { Provider } from 'react-redux';
 
 import { devTools } from 'redux-devtools';
-import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools';
+import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
 import { Route } from 'react-router';
 import { reduxReactRouter, routerStateReducer, ReduxRouter } from 'redux-router';
 import { createHistory } from 'history';
