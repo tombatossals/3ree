@@ -1,7 +1,32 @@
-import React, { Component, PropTypes } from 'react';
-import { VALUE_CLASSES } from '../constants/ActionTypes.js';
+import * as React from 'react';
+import { VALUE_CLASSES } from '../constants/ActionTypes';
 
-export default class EventInput extends Component {
+let { PropTypes, Component } = React;
+
+interface IEventInputOnSubmit {
+    text: string,
+    value: number,
+    userId: string
+}
+
+interface IEventInputProps {
+    onSubmit(params:IEventInputOnSubmit),
+    userId: string,
+    textLabel: string,
+    valueLabel: string,
+    value?: number,
+    editing?: boolean
+};
+
+interface IEventInputState {
+    text?: string,
+    value?: number,
+    errors?: {
+        [index: number]: string;
+    }
+}
+
+export default class EventInput extends Component<IEventInputProps, IEventInputState>  {
   static propTypes = {
     onSubmit: PropTypes.func.isRequired,
     userId: PropTypes.string.isRequired,
@@ -14,7 +39,7 @@ export default class EventInput extends Component {
     super(props, context);
     this.state = {
       errors: [],
-      text: this.props.text || '',
+      text: this.props.textLabel || '',
       value: this.props.value || 50
     };
   }
@@ -50,22 +75,22 @@ export default class EventInput extends Component {
   render() {
     let self = this;
     let saveText = (this.props.editing) ? 'Save' : 'Add';
-    let className = Object.keys(VALUE_CLASSES).reduce((current, key) => {
-      if (!current && self.state.value <= key) {
-        return VALUE_CLASSES[key];
+    let className = Object.keys(VALUE_CLASSES).reduce((prev:string, current:string) => {
+      if (self.state.value <= VALUE_CLASSES[current]) {
+        return VALUE_CLASSES[current];
       } else {
-        return current;
+        return VALUE_CLASSES[prev];
       }
-    }, null);
+    });
 
     return (
       <form className='Pulse-eventInput pure-form'>
         <fieldset>
-          <input type='text' placeholder={this.props.textLabel} autoFocus='true' value={this.state.text} onChange={::this.handleTextChange} />
+          <input type='text' placeholder={this.props.textLabel} autoFocus={true} value={this.state.text} onChange={this.handleTextChange} />
           <label htmlFor='value'>{this.props.valueLabel}</label>
-          <input className={className} type='range' id='value' min='1' max='100' value={this.state.value} onChange={::this.handleValueChange} /> 
+          <input className={className} type='range' id='value' min='1' max='100' value={this.state.value.toString()} onChange={this.handleValueChange} /> 
           <span className='Pulse-eventInput-value'>{this.state.value}</span>
-          <button type='submit' className='save pure-button' onClick={::this.handleSubmit}>{saveText}</button>
+          <button type='submit' className='save pure-button' onClick={this.handleSubmit}>{saveText}</button>
         </fieldset>
       </form>
     );

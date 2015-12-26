@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -6,7 +6,20 @@ import EventList from '../components/EventList';
 
 import * as PulseActions from '../actions/PulseActions';
 
-class MyEvents extends Component {
+let { Component } = React;
+
+interface IMyEventsProps {
+    editEvent(),
+    deleteEvent(),
+    userId: string,
+    events: [any]
+}
+
+interface IMyEventsState {
+    
+}
+
+class MyEvents extends Component<IMyEventsProps, IMyEventsState> {
   static propTypes = {
     editEvent: React.PropTypes.func.isRequired,
     deleteEvent: React.PropTypes.func.isRequired,

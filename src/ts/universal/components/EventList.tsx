@@ -1,7 +1,15 @@
-import React, {PropTypes, Component} from 'react';
+import * as React from 'react';
 import EventItem from './EventItem';
 
-export default class EventList extends Component {
+let { PropTypes, Component } = React;
+
+interface IEventListProps {
+    events: [any],
+    userId: string,
+    actions: any    
+}
+
+export default class EventList extends Component<IEventListProps, {}> {
   static propTypes = {
     events: PropTypes.array.isRequired,
     userId: PropTypes.string.isRequired,

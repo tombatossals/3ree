@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -6,7 +6,16 @@ import EventTicker from '../components/EventTicker';
 
 import * as PulseActions from '../actions/PulseActions';
 
-class OtherEvents extends Component {
+let { Component } = React;
+
+interface IOtherEventsProps {
+    editEvent(),
+    deleteEvent(),
+    userId: string,
+    events: [any]
+}
+
+class OtherEvents extends Component<IOtherEventsProps, {}> {
   static propTypes = {
     userId: React.PropTypes.string,
     events: React.PropTypes.array

@@ -1,11 +1,13 @@
-import { Component, PropTypes } from 'react';
-import { VALUE_CLASSES } from '../constants/ActionTypes.js';
+import * as React from 'react';
+import { VALUE_CLASSES } from '../constants/ActionTypes';
+let { PropTypes, Component } = React;
+;
 export default class EventInput extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
             errors: [],
-            text: this.props.text || '',
+            text: this.props.textLabel || '',
             value: this.props.value || 50
         };
     }
@@ -35,40 +37,15 @@ export default class EventInput extends Component {
     render() {
         let self = this;
         let saveText = (this.props.editing) ? 'Save' : 'Add';
-        let className = Object.keys(VALUE_CLASSES).reduce((current, key) => {
-            if (!current && self.state.value <= key) {
-                return VALUE_CLASSES[key];
+        let className = Object.keys(VALUE_CLASSES).reduce((prev, current) => {
+            if (self.state.value <= VALUE_CLASSES[current]) {
+                return VALUE_CLASSES[current];
             }
             else {
-                return current;
+                return VALUE_CLASSES[prev];
             }
-        }, null);
-        return className = 'Pulse-eventInput pure-form' >
-            type;
-        'text';
-        placeholder = { this: .props.textLabel };
-        autoFocus = 'true';
-        value = { this: .state.text };
-        onChange = { this: .handleTextChange } /  >
-            htmlFor;
-        'value' > { this: .props.valueLabel } < /label>
-            < input;
-        className = { className };
-        type = 'range';
-        id = 'value';
-        min = '1';
-        max = '100';
-        value = { this: .state.value };
-        onChange = { this: .handleValueChange } /  >
-            className;
-        'Pulse-eventInput-value' > { this: .state.value } < /span>
-            < button;
-        type = 'submit';
-        className = 'save pure-button';
-        onClick = { this: .handleSubmit } > { saveText } < /button>
-            < /fieldset>
-            < /form>;
-        ;
+        });
+        return (React.createElement("form", {"className": 'Pulse-eventInput pure-form'}, React.createElement("fieldset", null, React.createElement("input", {"type": 'text', "placeholder": this.props.textLabel, "autoFocus": true, "value": this.state.text, "onChange": this.handleTextChange}), React.createElement("label", {"htmlFor": 'value'}, this.props.valueLabel), React.createElement("input", {"className": className, "type": 'range', "id": 'value', "min": '1', "max": '100', "value": this.state.value.toString(), "onChange": this.handleValueChange}), React.createElement("span", {"className": 'Pulse-eventInput-value'}, this.state.value), React.createElement("button", {"type": 'submit', "className": 'save pure-button', "onClick": this.handleSubmit}, saveText))));
     }
 }
 EventInput.propTypes = {

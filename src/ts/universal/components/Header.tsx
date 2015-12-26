@@ -1,7 +1,9 @@
-import React, { PropTypes, Component } from 'react';
+import * as React from 'react';
 import { IndexLink, Link } from 'react-router';
 
-export default class Header extends Component {
+let { PropTypes, Component } = React;
+
+export default class Header extends Component<{}, {}> {
   render() {
     return (
       <div>

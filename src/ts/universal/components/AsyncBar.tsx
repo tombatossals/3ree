@@ -7,13 +7,13 @@ interface IAsyncBarProps {
     error: string
 };
 
-export default class AsyncBar extends Component<IAsyncBarProps> {
+export default class AsyncBar extends Component<IAsyncBarProps, {}> {
   static propTypes = {
     isWorking: PropTypes.bool,
     error: PropTypes.string
   };
 
-  render() {
+  public render():JSX.Element {
     let spinner = (this.props.isWorking) ? this.renderSpinner() : null;
     let error = (this.props.error) ? this.renderError() : null;
 
@@ -25,7 +25,7 @@ export default class AsyncBar extends Component<IAsyncBarProps> {
     );
   }
 
-  renderSpinner() {
+  public renderSpinner():JSX.Element {
     return (
       <div className="Pulse-async-spinner">
         Loading…
@@ -33,7 +33,7 @@ export default class AsyncBar extends Component<IAsyncBarProps> {
     );
   }
 
-  renderError() {
+  public renderError():JSX.Element {
     return (
       <p className="Pulse-async-error">
         {this.props.error}

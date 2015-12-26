@@ -1,18 +1,16 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import EventList from '../components/EventList';
 import * as PulseActions from '../actions/PulseActions';
+let { Component } = React;
 class MyEvents extends Component {
     render() {
         let actions = {
             editEvent: this.props.editEvent,
             deleteEvent: this.props.deleteEvent
         };
-        return events = { this: .props.events };
-        userId = { this: .props.userId };
-        actions = { actions } /  >
-        ;
-        ;
+        return (React.createElement(EventList, {"events": this.props.events, "userId": this.props.userId, "actions": actions}));
     }
 }
 MyEvents.propTypes = {

@@ -1,8 +1,24 @@
-import React, {PropTypes, Component} from 'react';
+import * as React from 'react';
 import moment from 'moment';
 import EventInput from './EventInput';
 
-export default class EventItem extends Component {
+let { PropTypes, Component } = React;
+
+interface IEventItemProps {
+    id: any,
+    row: number,
+    event: any,
+    key: number,
+    editable: boolean,
+    editEvent?(event: any),
+    deleteEvent?(event: any)   
+}
+
+interface IEventItemState {
+    editing: boolean    
+}
+
+export default class EventItem extends Component<IEventItemProps, IEventItemState> {
   static propTypes = {
     id: PropTypes.any.isRequired,
     row: PropTypes.number.isRequired,
@@ -42,7 +58,7 @@ export default class EventItem extends Component {
 
     if (this.state.editing) {
       element = (
-        <EventInput text={event.text} 
+        <EventInput textLabel={event.text} 
                     value={event.value}
                     userId={event.userId} 
                     editing={this.state.editing}
@@ -56,9 +72,8 @@ export default class EventItem extends Component {
       element = (
         <div className='Pulse-eventItem'>
           <p className='rowNumber'>{row+1}.</p>
-          <p className='title' onClick={::this.handleClick}>
+          <p className='title' onClick={this.handleClick}>
             {event.text}
-            
           </p>
           {del}
           <p className='created'>{moment(modified).fromNow()}</p>

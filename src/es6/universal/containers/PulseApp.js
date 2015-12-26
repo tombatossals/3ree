@@ -1,35 +1,18 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import Header from '../components/Header';
 import AsyncBar from '../components/AsyncBar';
+import EventInput from '../components/EventInput';
 import * as PulseActions from '../actions/PulseActions';
+let { Component } = React;
 class PulseApp extends Component {
     render() {
         let actions = {
             editEvent: this.props.editEvent,
             deleteEvent: this.props.deleteEvent
         };
-        return className = "Pulse-Container" >
-            />
-            < section;
-        className = 'Pulse-addEventForm' >
-            onSubmit;
-        {
-            this.props.addEvent;
-        }
-        userId = { this: .props.userId };
-        textLabel = 'What happened?';
-        valueLabel = 'Rating' /  >
-            /section>
-            < AsyncBar;
-        isWorking = { this: .props.isWorking };
-        error = { this: .props.error } /  >
-            { this: .props.myEvents };
-        {
-            this.props.otherEvents;
-        }
-        /div>;
-        ;
+        return (React.createElement("div", {"className": "Pulse-Container"}, React.createElement(Header, null), React.createElement("section", {"className": 'Pulse-addEventForm'}, React.createElement(EventInput, {"onSubmit": this.props.addEvent, "userId": this.props.userId, "textLabel": 'What happened?', "valueLabel": 'Rating'})), React.createElement(AsyncBar, {"isWorking": this.props.isWorking, "error": this.props.error}), this.props.myEvents, this.props.otherEvents));
     }
 }
 PulseApp.propTypes = {

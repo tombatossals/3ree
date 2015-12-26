@@ -1,27 +1,17 @@
-import { PropTypes, Component } from 'react';
+import * as React from 'react';
+let { PropTypes, Component } = React;
+;
 export default class AsyncBar extends Component {
     render() {
         let spinner = (this.props.isWorking) ? this.renderSpinner() : null;
         let error = (this.props.error) ? this.renderError() : null;
-        return className = 'Pulse-async' >
-            { spinner };
-        {
-            error;
-        }
-        /section>;
-        ;
+        return (React.createElement("section", {"className": 'Pulse-async'}, spinner, error));
     }
     renderSpinner() {
-        return className = "Pulse-async-spinner" >
-            Loading;
-        /div>;
-        ;
+        return (React.createElement("div", {"className": "Pulse-async-spinner"}, "Loading…"));
     }
     renderError() {
-        return className = "Pulse-async-error" >
-            { this: .props.error }
-            < /p>;
-        ;
+        return (React.createElement("p", {"className": "Pulse-async-error"}, this.props.error));
     }
 }
 AsyncBar.propTypes = {

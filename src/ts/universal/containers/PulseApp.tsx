@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -10,7 +10,21 @@ import EventInput from '../components/EventInput';
 
 import * as PulseActions from '../actions/PulseActions';
 
-class PulseApp extends Component {
+let { Component } = React;
+
+interface IPulseAppProps {
+    addEvent(),
+    editEvent(),
+    deleteEvent(),
+    userId: string,
+    events: [any],
+    isWorking: boolean,
+    error: any,
+    myEvents: any,
+    otherEvents: any
+}
+
+class PulseApp extends Component<IPulseAppProps, {}> {
   static propTypes = {
     addEvent: React.PropTypes.func.isRequired,
     editEvent: React.PropTypes.func.isRequired,
