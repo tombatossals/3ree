@@ -20,7 +20,7 @@ interface IMyEventsState {
 }
 
 class MyEvents extends Component<IMyEventsProps, IMyEventsState> {
-  static propTypes = {
+  static propTypes:React.ValidationMap<any> = {
     editEvent: React.PropTypes.func.isRequired,
     deleteEvent: React.PropTypes.func.isRequired,
     userId: React.PropTypes.string,

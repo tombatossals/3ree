@@ -1,5 +1,5 @@
 import * as types from '../constants/ActionTypes';
-import request from 'superagent';
+import * as request from 'superagent';
 
 const serverUrl = '';
 const eventsUrl = serverUrl + '/api/0/events';
@@ -13,7 +13,7 @@ export function setUserId(userId) {
 
 export function loadEvents(event) {
   return dispatch => {
-    dispatch(LoadEventsRequest(event));
+    dispatch(loadEventsRequest());
 
     return request
       .get(eventsUrl)
@@ -21,7 +21,7 @@ export function loadEvents(event) {
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) {
-          dispatch(loadEventsFailure(err, event));
+          dispatch(loadEventsFailure(err));
         } else {
           dispatch(loadEventsSuccess(res.body));
         }

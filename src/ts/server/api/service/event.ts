@@ -1,3 +1,4 @@
+/// <reference path="../../../../../typings/tsd.d.ts" />
 
 import * as r from 'rethinkdb';
 import * as xss from 'xss';
@@ -30,7 +31,11 @@ export function getEvents() {
     return r
     .table('pulses')
     .orderBy('id').run(conn)
-    .then(cursor => cursor.toArray());
+    .then(cursor => {
+        return cursor.toArray((err, rows) => {
+            return rows;
+        });
+    });
   });
 }
 

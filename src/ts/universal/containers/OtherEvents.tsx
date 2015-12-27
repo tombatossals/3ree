@@ -16,7 +16,7 @@ interface IOtherEventsProps {
 }
 
 class OtherEvents extends Component<IOtherEventsProps, {}> {
-  static propTypes = {
+  static propTypes:React.ValidationMap<any> = {
     userId: React.PropTypes.string,
     events: React.PropTypes.array
   };

@@ -25,7 +25,7 @@ interface IPulseAppProps {
 }
 
 class PulseApp extends Component<IPulseAppProps, {}> {
-  static propTypes = {
+  static propTypes:React.ValidationMap<any> = {
     addEvent: React.PropTypes.func.isRequired,
     editEvent: React.PropTypes.func.isRequired,
     deleteEvent: React.PropTypes.func.isRequired,

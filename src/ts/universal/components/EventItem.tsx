@@ -1,5 +1,7 @@
+/// <reference path="../../../../typings/tsd.d.ts" />
+
 import * as React from 'react';
-import moment from 'moment';
+import * as moment from 'moment';
 import EventInput from './EventInput';
 
 let { PropTypes, Component } = React;

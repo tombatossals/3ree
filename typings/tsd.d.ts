@@ -21,7 +21,24 @@
 /// <reference path="node-uuid/node-uuid.d.ts" />
 /// <reference path="node-uuid/node-uuid-base.d.ts" />
 /// <reference path="node-uuid/node-uuid-cjs.d.ts" />
+/// <reference path="superagent/superagent.d.ts" />
+/// <reference path="moment/moment.d.ts" />
+/// <reference path="moment/moment-node.d.ts" />
 
 declare module "xss" {
-    export default class xss {}
+    var constructor: any;
+	export = constructor;
+}
+
+
+declare module "redux-router" {
+    export function reduxReactRouter(history: any);
+    export function routerStateReducer();
+    export function ReduxRouter();
+    
+}
+
+declare module "redux-router/server" {
+    export function reduxReactRouter(params: any);
+    export function match(url: string, callback: any);
 }

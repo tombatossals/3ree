@@ -1,6 +1,7 @@
-import r from 'rethinkdb';
-import config from '../config.json';
-import xss from 'xss';
+/// <reference path="../../../../../typings/tsd.d.ts" />
+import * as r from 'rethinkdb';
+import * as xss from 'xss';
+var config = require('../config');
 function connect() {
     return r.connect(config);
 }
@@ -25,7 +26,11 @@ export function getEvents() {
         return r
             .table('pulses')
             .orderBy('id').run(conn)
-            .then(cursor => cursor.toArray());
+            .then(cursor => {
+            return cursor.toArray((err, rows) => {
+                return rows;
+            });
+        });
     });
 }
 export function addEvent(event) {

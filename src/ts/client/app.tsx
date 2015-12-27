@@ -23,8 +23,9 @@ import '../style/pure.css';
 import '../style/main.css';
 import '../style/spinner.css';
 
+
 // Grab the state from a global injected into server-generated HTML
-let initialState = window.__INITIAL_STATE__;
+let initialState = window['__INITIAL_STATE__'];
 
 const loggerMiddleware = createLogger({
   level: 'info',
